@@ -1,4 +1,4 @@
-เว็บที่โพสข้อความหรือรูปภาพได้
+เว็บที่โพสข้อความหรือรูปภาพได้แบบ pantip
 
 ระบบหลัก
 1. อ่านโพสจากข้อมูลที่เตรียมไว้ได้
@@ -31,3 +31,9 @@
 ref https://www.youtube.com/watch?v=7k1DsXVo6mA
 19. ทำ Form Validation
 ref https://www.youtube.com/watch?v=9T-b4oi1-1A
+
+ตัวช่วยเหลือ
+- CSS
+https://css-generator.netlify.app/layout-grid-items
+- สุ่ม content
+https://www.lipsum.com/
