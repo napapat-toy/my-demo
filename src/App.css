@@ -1,6 +1,7 @@
 .app-section {
   text-align: left;
-  margin-left: 60px;
+  margin-left: 40px;
+  padding: 20px;
 }
 
 .app-container {
@@ -11,8 +12,9 @@
   max-width: 70%;
 }
 
-.app-content {
-  display: block;
+.post-content {
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   border: 3px solid black;
   padding: 16px;
@@ -20,7 +22,22 @@
   margin-bottom: 8px;
 }
 
-.app-content-header {
+.post-content-header {
   font-weight: bold;
   font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.post-create textarea{
+  width: 99%;
+  min-width: 30%;
+  min-height: 200px;
+  margin: 0px 8px 8px 0px;
+  resize: none;
+}
+
+button {
+  font-size: 24px;
+  width: 100%;
+  padding: 8px;
 }

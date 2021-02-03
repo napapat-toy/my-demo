@@ -1,13 +1,14 @@
+import '../App.css';
 
 function PostItem(props) {
 
     // console.log(props);
-    const { postId,content } = props.postItem;
+    const { id,content } = props.postItem;
 
     return (
-        <div className="app-content">
-            <div className="app-content-header">
-                Post {postId}
+        <div className="post-content">
+            <div className="post-content-header">
+                Post {id}
             </div>
             <p>
                 {content}
