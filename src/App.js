@@ -17,8 +17,6 @@ function App() {
   //Type Comment Function
   function onCommentChange(event) {
     const content = event.target.value;
-    // console.log(event);
-    // console.log(content);
     setComment((prevComment) => {
       return {
         ...prevComment,
@@ -33,12 +31,7 @@ function App() {
     //Add Comment Function
     setAllComments((prevAllComment) => {
       const newComment = { ...comment };
-      if (allCommentsElements.length === 0) {
-        newComment.id = 1
-      }
-      else {
-        newComment.id = allCommentsElements.length + 1
-      }
+      newComment.id = allCommentsElements.length + 1
       return [...prevAllComment, newComment]
     });
 
@@ -46,10 +39,20 @@ function App() {
     setComment(emptyComment);
   }
 
+  //Pass function to postitem
+  function deleteComment(commentId) {
+    console.log("id :" + commentId);
+  }
+
   //Call comment element
   const allCommentsElements = allComments.map((comment) => {
+
     return (
-      <PostItem key={comment.id} postItem={comment} />
+      <PostItem
+        key={comment.id}
+        postItem={comment}
+        deleteComment={() => deleteComment(comment.id)}
+      />
     )
   })
 
