@@ -3,17 +3,8 @@ import '../App.css';
 function PostItem(props) {
 
     console.log(props);
-    const { id, content } = props.postItem;
-    const { deleteComment } = props.deleteComment;
-
-    function onCommentEdit(commentId) {
-        console.log(`Edit at id : ${commentId}`);
-    }
-
-    function onCommentDelete(commentId) {
-        console.log(`Delete at id : ${commentId}`);
-    }
-
+    const { id, content  } = props.postItem;
+    const {onDeleteComment, onEditComment} = props;
     return (
         <div className="post-content">
             <div className="post-content-header">
@@ -23,9 +14,9 @@ function PostItem(props) {
                 {content}
             </p>
             <p>
-                <a onClick={() => { onCommentEdit(id) }}>Edit</a>
+                <a onClick={() => { onEditComment(id) }}>Edit</a>
                 <span> : </span>
-                <a onClick={deleteComment}>Delete</a>
+                <a onClick={() => { onDeleteComment(id) }}>Delete</a>
             </p>
         </div>
     )

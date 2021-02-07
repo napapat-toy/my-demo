@@ -11,8 +11,9 @@ const emptyComment = {
 function App() {
 
   //State
-  const [comment, setComment] = useState('')
-  const [allComments, setAllComments] = useState([])
+  const [comment, setComment] = useState('');
+  const [allComments, setAllComments] = useState([]);
+  const [editComment, setEditComment] = useState([]);
 
   //Type Comment Function
   function onCommentChange(event) {
@@ -39,19 +40,42 @@ function App() {
     setComment(emptyComment);
   }
 
-  //Pass function to postitem
-  function deleteComment(commentId) {
-    console.log("id :" + commentId);
+  //Pass function delete,edit to postitem
+
+  //Delete Comment
+  function onDeleteComment(deleteCommentId) {
+    console.log("id : " + deleteCommentId);
+    setAllComments((prevAllComment) => {
+      return prevAllComment.filter(comment => comment.id !== deleteCommentId)
+    });
+  }
+
+  //Edit Comment
+  function onEditComment(editCommentId) {
+    setAllComments((prevAllComment) => {
+      return prevAllComment.map((comment) => {
+        if (comment.id !== editCommentId) return comment;
+        return editComment;
+      });
+    });
+
+    //Clear Edit Form
+    setEditComment(null);
+  }
+
+  //Edit Comment Value Change
+  function onEditCommentValueChange(event) {
+    const {id,comment} = event.target;
   }
 
   //Call comment element
   const allCommentsElements = allComments.map((comment) => {
-
     return (
       <PostItem
         key={comment.id}
         postItem={comment}
-        deleteComment={() => deleteComment(comment.id)}
+        onDeleteComment={() => { onDeleteComment(comment.id) }}
+        onEditComment={() => { onEditComment(comment.id) }}
       />
     )
   })
