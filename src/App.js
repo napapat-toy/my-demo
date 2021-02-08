@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 // import PostCreate from './components/PostCreate';
 import PostItem from './components/PostItem';
-// import PostData from './postdata';
+import uuid from "uuid";
 
 const emptyComment = {
   content: ''
@@ -32,7 +32,8 @@ function App() {
     //Add Comment Function
     setAllComments((prevAllComment) => {
       const newComment = { ...comment };
-      newComment.id = allCommentsElements.length + 1
+      newComment.id = Date.now().toString();
+      newComment.uniqueKey = uuid();
       return [...prevAllComment, newComment]
     });
 
@@ -46,15 +47,16 @@ function App() {
   function onDeleteComment(deleteCommentId) {
     console.log("id : " + deleteCommentId);
     setAllComments((prevAllComment) => {
-      return prevAllComment.filter(comment => comment.id !== deleteCommentId)
+      return prevAllComment.filter(comment => comment.uniqueKey !== deleteCommentId)
     });
   }
 
   //Edit Comment
   function onEditComment(editCommentId) {
+    console.log("Edit Id : " +editCommentId);
     setAllComments((prevAllComment) => {
       return prevAllComment.map((comment) => {
-        if (comment.id !== editCommentId) return comment;
+        if (comment.uniqueKey !== editCommentId) return comment;
         return editComment;
       });
     });
@@ -63,19 +65,46 @@ function App() {
     setEditComment(null);
   }
 
+  //Edit Comment Form
+  let editCommentElement = null;
+  if (!!editComment) {
+    editCommentElement = (
+      <div>
+        <form>
+          <p>
+            <textarea 
+            rows="3"
+            />
+          </p>
+          <p>
+            <button type="submit">Edit</button>
+          </p>
+        </form>
+      </div>
+    );
+  }
+
   //Edit Comment Value Change
   function onEditCommentValueChange(event) {
-    const {id,comment} = event.target;
+    const { id, comment } = event.target;
+    const content = event.target.value;
+    setComment((prevEditComment) => {
+      return {
+        ...prevEditComment,
+        content
+      };
+    });
   }
 
   //Call comment element
-  const allCommentsElements = allComments.map((comment) => {
+  const allCommentsElements = allComments.map((comment, index) => {
     return (
       <PostItem
         key={comment.id}
         postItem={comment}
-        onDeleteComment={() => { onDeleteComment(comment.id) }}
-        onEditComment={() => { onEditComment(comment.id) }}
+        index={index}
+        onDeleteComment={() => { onDeleteComment(comment.uniqueKey) }}
+        onEditComment={() => { onEditComment(comment.uniqueKey) }}
       />
     )
   })

@@ -41,3 +41,14 @@ button {
   width: 100%;
   padding: 8px;
 }
+
+.post-edit-comment{
+  background-color: white;
+  border: 4px solid black;
+  width: 250px;
+  padding: 12px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 99;
+}
