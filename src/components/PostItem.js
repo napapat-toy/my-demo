@@ -2,11 +2,11 @@ import '../App.css';
 
 function PostItem(props) {
 
-    console.log(props);
-    const { content, uniqueKey } = props.postItem;
+    // console.log(props);
+    const { content, uniqueKey, id } = props.postItem;
     const { onDeleteComment, onEditComment, index } = props;
     return (
-        <div className="post-content">
+        <div key={id} className="post-content">
             <div className="post-content-header">
                 Post {index + 1}
             </div>

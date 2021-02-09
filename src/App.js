@@ -11,9 +11,9 @@ const emptyComment = {
 function App() {
 
   //State
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState(emptyComment);
   const [allComments, setAllComments] = useState([]);
-  const [editComment, setEditComment] = useState([]);
+  const [editComment, setEditComment] = useState(null);
 
   //Type Comment Function
   function onCommentChange(event) {
@@ -52,11 +52,12 @@ function App() {
   }
 
   //Edit Comment
-  function onEditComment(editCommentId) {
-    console.log("Edit Id : " +editCommentId);
-    setAllComments((prevAllComment) => {
-      return prevAllComment.map((comment) => {
-        if (comment.uniqueKey !== editCommentId) return comment;
+  function onEditComment(event) {
+    event.preventDefault();
+
+    setAllComments((prevAllComments) => {
+      return prevAllComments.map((comment) => {
+        if (comment.uniqueKey !== editComment.uniqueKey) return comment;
         return editComment;
       });
     });
@@ -65,15 +66,32 @@ function App() {
     setEditComment(null);
   }
 
+
+  //Edit Comment Value Change
+  function onEditCommentValueChange(event) {
+    console.log(event.target.value);
+    const content = event.target.value;
+    setEditComment((prevEditComment) => {
+      return {
+        ...prevEditComment,
+        content
+      };
+    });
+  }
+
   //Edit Comment Form
   let editCommentElement = null;
   if (!!editComment) {
     editCommentElement = (
-      <div>
-        <form>
+      <div className="post-edit-comment">
+        <form onSubmit={onEditComment}>
           <p>
-            <textarea 
-            rows="3"
+            <textarea
+              rows="3"
+              placeholder="Edit comment"
+              name="content"
+              value={editComment.content}
+              onChange={onEditCommentValueChange}
             />
           </p>
           <p>
@@ -84,18 +102,6 @@ function App() {
     );
   }
 
-  //Edit Comment Value Change
-  function onEditCommentValueChange(event) {
-    const { id, comment } = event.target;
-    const content = event.target.value;
-    setComment((prevEditComment) => {
-      return {
-        ...prevEditComment,
-        content
-      };
-    });
-  }
-
   //Call comment element
   const allCommentsElements = allComments.map((comment, index) => {
     return (
@@ -104,7 +110,7 @@ function App() {
         postItem={comment}
         index={index}
         onDeleteComment={() => { onDeleteComment(comment.uniqueKey) }}
-        onEditComment={() => { onEditComment(comment.uniqueKey) }}
+        onEditComment={() => { setEditComment(comment) }}
       />
     )
   })
@@ -134,6 +140,7 @@ function App() {
         </div>
         {allCommentsElements}
       </div>
+      {editCommentElement}
     </section>
   );
 }
