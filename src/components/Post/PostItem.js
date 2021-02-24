@@ -1,4 +1,4 @@
-import '../App.css';
+import '../../App.css';
 
 function PostItem(props) {
 
@@ -12,6 +12,9 @@ function PostItem(props) {
             </div>
             <p>
                 {content}
+            </p>
+            <p>
+                Post By 
             </p>
             <p>
                 <a onClick={() => { onEditComment(uniqueKey) }}>Edit</a>

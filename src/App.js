@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 // import PostCreate from './components/PostCreate';
-import PostItem from './components/PostItem';
+import PostItem from './components/Post/PostItem';
 import uuid from "uuid";
+import UserInterface from './components/User/UserInterface';
 
 const emptyComment = {
   content: ''
@@ -102,6 +103,11 @@ function App() {
     );
   }
 
+  //Read Name
+  function onGetName(username) {
+    // console.log(username);
+  }
+
   //Call comment element
   const allCommentsElements = allComments.map((comment, index) => {
     return (
@@ -114,6 +120,8 @@ function App() {
       />
     )
   })
+
+  const callUser = <UserInterface onGetName={() => { onGetName() }} />
 
   return (
     <section className="app-section">
@@ -139,6 +147,7 @@ function App() {
           </form>
         </div>
         {allCommentsElements}
+        {callUser}
       </div>
       {editCommentElement}
     </section>

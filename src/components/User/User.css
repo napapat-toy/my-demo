@@ -1,0 +1,12 @@
+.user-ui {
+    position: absolute;
+    border: 3px solid black;
+    top: 0;
+    right:0;
+    padding: 16px;
+    margin: 16px;
+}
+
+.user-pic {
+    text-align: center;
+}

@@ -10,8 +10,8 @@
 ระบบเกี่ยวกับ user
 5. ระบบ user
 6. แก้ไขข้อมูล user ได้
-7. ใส่รูปโปรไฟล์ user ได้
-8. ลบ user ได้
+7. ลบ user ได้
+8. ใส่รูปโปรไฟล์ user ได้
 
 การตกแต่ง UI
 9. ตกแต่ง ตัวโพส
@@ -31,6 +31,12 @@
 ref https://www.youtube.com/watch?v=7k1DsXVo6mA
 19. ทำ Form Validation
 ref https://www.youtube.com/watch?v=9T-b4oi1-1A
+
+หลังจากเขียนเสร็จทั้งหมด
+20. Refactor code ทั้งหมด
+21. อัพขึ้น cloud ให้ได้
+    - Frontend อัพขึ้น netlify / Heroku
+    - Backend / DB อัพขึ้น mongolDB
 
 ตัวช่วยเหลือ
 - CSS
