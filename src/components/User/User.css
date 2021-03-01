@@ -1,12 +1,14 @@
 .user-ui {
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex: 6;
     border: 3px solid black;
-    top: 0;
-    right:0;
     padding: 16px;
     margin: 16px;
+    background-color: white;
+    text-align: center;
 }
 
 .user-pic {
-    text-align: center;
+    margin-top: 60px;
 }

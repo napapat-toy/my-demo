@@ -20,9 +20,7 @@ const getFullName = (userInfo) => {
 
 function UserInterface(props) {
 
-    console.log(props);
-
-    const { onGetName } = props;
+    // console.log(props);
 
     const [userName, setUserName] = useState([]);
 
@@ -36,17 +34,10 @@ function UserInterface(props) {
         fetchUserDataAll();
     }, [])
 
-    console.log(userName[0]);
-    if (userName[0]) {
-        const fullName = getFullName(userName[0]);
-        console.log(fullName);
-        onGetName(fullName)
-    }
-
     return (
         <div className="user-ui">
             <div className="user-pic">
-                <img src={userName[0] ? userName[0].picture.large : ''} />
+                <img alt="random people" src={userName[0] ? userName[0].picture.large : ''} />
             </div>
             <div className="user-name">{userName[0] ? getFullName(userName[0]) : ''}</div>
         </div>
