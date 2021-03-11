@@ -1,13 +1,14 @@
-.user-ui {
+.fetching-api {
+    height: 100%;
     display: flex;
     flex-direction: column;
     flex: 6;
     border: 3px solid black;
     background-color: white;
-    text-align: center;
-    height: 100%;
 }
 
-.user-pic {
-    margin-top: 60px;
+.api-minimal {
+    text-align: center;
+    margin: 60px;
+    padding: 40px;
 }

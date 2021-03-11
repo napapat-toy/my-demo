@@ -1,7 +1,4 @@
 .post {
-    margin-left: 40px;
-    padding: 20px;
-    flex:6;
 }
 
 .post-content {
@@ -21,11 +18,12 @@
 }
 
 .post-create textarea {
-    width: 99%;
+    width: 100%;
     min-width: 30%;
     min-height: 200px;
     margin: 0px 8px 8px 0px;
     resize: none;
+    padding: 6px;
 }
 
 .post-edit-comment {
@@ -46,4 +44,8 @@
     padding: 8px;
     border: 1px solid gray;
     resize: none;
+}
+
+.p-tag-content {
+    max-width: 100%;
 }

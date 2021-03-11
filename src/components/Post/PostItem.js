@@ -1,4 +1,4 @@
-import '../../App.css';
+import './PostStyle.css';
 
 function PostItem(props) {
 
@@ -10,7 +10,7 @@ function PostItem(props) {
             <div className="post-content-header">
                 Post {index + 1}
             </div>
-            <p>
+            <p className="p-tag-content">
                 {content}
             </p>
             <p>
